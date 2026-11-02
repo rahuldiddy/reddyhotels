@@ -214,6 +214,42 @@ a:hover .ph.dev::after{opacity:0}
   .cap-card{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));width:auto;bottom:16px}
 }
 
+/* ======================= FILM ======================= */
+.film{padding-block:clamp(88px,10vw,160px) clamp(80px,9vw,140px)}
+.film .grid{align-items:end;row-gap:40px}
+.film-copy{grid-column:1/span 4;display:grid;gap:24px;padding-bottom:clamp(8px,4vw,64px)}
+.film-stage{grid-column:6/span 7;position:relative;padding:0 0 clamp(18px,2.4vw,36px) clamp(18px,2.4vw,36px)}
+.film-stage::before{content:"";position:absolute;left:0;bottom:0;width:62%;height:70%;background:var(--lime)}
+.vframe{position:relative;z-index:1;aspect-ratio:16/9;background:var(--char);overflow:hidden}
+.vframe .ph{position:absolute;inset:0;background:var(--char)}
+.vframe .ph img{transition:transform 1.4s var(--ease),opacity .5s}
+.vframe .play{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;padding:clamp(18px,2.4vw,34px);text-decoration:none;color:var(--ivory);background:linear-gradient(0deg,rgba(41,42,39,.72) 0%,rgba(41,42,39,.1) 55%,rgba(41,42,39,0) 100%)}
+.vframe .play:hover ~ .ph img,.vframe:hover .ph img{transform:scale(1.03)}
+.vframe .pbtn{width:clamp(64px,7vw,104px);height:clamp(64px,7vw,104px);background:var(--terra);display:grid;place-items:center;flex:none;transition:background .4s,transform .6s var(--ease)}
+.vframe .pbtn svg{width:34%;height:34%;fill:var(--ivory);margin-left:8%}
+.vframe .play:hover .pbtn,.vframe .play:focus-visible .pbtn{background:var(--char);transform:scale(1.06)}
+.vframe .play:focus-visible{outline:3px solid var(--ivory);outline-offset:-6px}
+.vframe .vt{display:grid;gap:6px}
+.vframe .vt b{font:330 clamp(22px,2.2vw,34px)/1.05 var(--f-serif);letter-spacing:-.02em}
+.vframe iframe{position:absolute;inset:0;z-index:3;width:100%;height:100%;border:0;background:#000}
+.vchap{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+.vchap button{all:unset;cursor:pointer;display:grid;gap:8px;min-width:0}
+.vchap .ph{aspect-ratio:16/9;outline:1px solid transparent;outline-offset:2px;transition:outline-color .3s}
+.vchap .ph img{filter:grayscale(.6);transition:filter .5s}
+.vchap button:hover .ph img,.vchap button[aria-pressed="true"] .ph img{filter:none}
+.vchap button[aria-pressed="true"] .ph{outline-color:var(--terra)}
+.vchap button:focus-visible .ph{outline:2px solid var(--terra)}
+.vchap span{display:flex;justify-content:space-between;gap:8px}
+.vchap button[aria-pressed="true"] .lbl{color:var(--terra)}
+.film-meta{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;border-top:1px solid var(--line-2);padding-top:18px}
+.hero-side .watch{display:inline-flex;align-items:center;gap:12px;font:500 12px/1 var(--f-sans);font-variation-settings:"wdth" 118;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--char)}
+.hero-side .watch i{width:34px;height:34px;background:var(--terra);display:grid;place-items:center;transition:background .3s}
+.hero-side .watch i svg{width:11px;height:11px;fill:var(--ivory);margin-left:2px}
+.hero-side .watch:hover i{background:var(--char)}
+@media (max-width:900px){.film-copy,.film-stage{grid-column:1/-1}.film-copy{padding-bottom:0}.film-stage{padding:0 0 14px 14px}}
+.vframe .vt{min-width:0}
+@media (max-width:520px){.vchap{grid-template-columns:repeat(2,minmax(0,1fr))}.vframe .vt b{font-size:18px}.vframe .vt .lbl{display:none}}
+
 /* ======================= MANIFESTO ======================= */
 .mani .statement{max-width:24ch;font-size:clamp(32px,4.5vw,72px);line-height:1.1}
 .chipimg{display:inline-block;position:relative;height:.78em;width:1.45em;vertical-align:-.06em;margin-inline:.08em;overflow:hidden;background:var(--lime);transition:width 1.1s var(--ease)}
@@ -657,8 +693,24 @@ a:hover .ph.dev::after{opacity:0}
     </div>
     <div class="hero-side">
       <p class="lede">Reddy Hotels &amp; Management Group develops, constructs, owns and operates hotels across Texas. More than twenty hotels since our first boutique property in Plainview, alongside residential and event development.</p>
-      <div class="ctas"><a class="btn b-char" href="#portfolio">Explore the portfolio <span class="ar"></span></a><a class="tl" href="#contact" data-enq="Investment">Partner or invest</a></div>
+      <div class="ctas"><a class="btn b-char" href="#portfolio">Explore the portfolio <span class="ar"></span></a><a class="watch" href="#home" data-anchor="film" data-autoplay><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></i>Watch the film</a></div>
       <ol class="cycle" aria-label="What we do, in order"><li><b>i.</b>Develop</li><li><b>ii.</b>Construct</li><li><b>iii.</b>Own</li><li><b>iv.</b>Operate</li></ol>
+    </div>
+  </section>
+
+  <section class="film" id="film" aria-labelledby="filmH">
+    <div class="wrap grid">
+      <div class="film-copy">
+        <p class="lbl kicker rv">On film · Bonham, 2016</p>
+        <h2 class="d-m rv" id="filmH">The grand opening of Bonham’s <em>first hotel.</em></h2>
+        <p class="lede rv">Watch the opening of the Holiday Inn Express at Highway 121 and GK Reddy Avenue, the first hotel in the city of Bonham.</p>
+        <div class="film-meta rv"><span class="lbl" id="vNow">Part 1</span><a class="tl" id="vYT" href="https://www.youtube.com/watch?v=Bduo1nEmjEE" target="_blank" rel="noopener">Watch on YouTube ↗</a></div>
+        <p class="rv"><a class="tl" href="#project-holiday-inn-express-bonham">About the hotel</a></p>
+      </div>
+      <div class="film-stage rv">
+        <div class="vframe" id="vframe"></div>
+        <div class="vchap" id="vchap" role="group" aria-label="Choose a part of the grand opening film"></div>
+      </div>
     </div>
   </section>
 
@@ -1045,6 +1097,10 @@ const PH={ // key -> [object-position, alt]
   "stock-room":["40% 50%","Hotel guest room"],
   "stock-bedside":["35% 50%","Hotel guest room detail"],
   "stock-model":["40% 50%","Architectural model of a new development"],
+  "video-Bduo1nEmjEE":["50% 50%","Speakers at the grand opening of the Holiday Inn Express in Bonham"],
+  "video-swIoEC9mAnM":["50% 40%","GK Reddy speaking at the grand opening in Bonham"],
+  "video-hkOQZsejMDU":["50% 50%","Ribbon cutting at the Holiday Inn Express in Bonham"],
+  "video-1N4FRGlDXRU":["50% 40%","Guests inside the Holiday Inn Express in Bonham at its opening"],
 };
 const CITY={ // city-center coordinates, used for site-plan captions and the map
   "Plainview":[34.18,-101.71],"Lubbock":[33.58,-101.86],"Childress":[34.43,-100.20],"Bonham":[33.58,-96.18],
@@ -1062,7 +1118,7 @@ const PROJECTS=[
    lead:"We opened the first hotel in the city of Wills Point.",
    body:["The Best Western Plus serves the community with event, leisure and travel accommodation.","The hotel opened during the Covid pandemic, and business has been exceptional since."],
    facts:[["Opened","During the Covid pandemic"],["Milestone","First hotel in Wills Point"]]},
-  {slug:"holiday-inn-express-bonham", name:"Holiday Inn Express", city:"Bonham", cat:"Hotel", brand:"Holiday Inn Express (IHG)", status:"completed", year:"2016", img:["hie-bonham","gk-ave"],
+  {slug:"holiday-inn-express-bonham", name:"Holiday Inn Express", city:"Bonham", cat:"Hotel", brand:"Holiday Inn Express (IHG)", status:"completed", year:"2016", img:["hie-bonham","gk-ave","video-hkOQZsejMDU"], film:true,
    short:"Bonham’s first hotel, opened in 2016 at Highway 121 and GK Reddy Avenue.",
    lead:"In 2016 we built the first hotel in the city of Bonham.",
    body:["The Holiday Inn Express stands at the intersection of Highway 121 and GK Reddy Avenue, serving the community with event, leisure and travel accommodation.","Bonham has since become a center of the group’s work. A second hotel is rising next door, the Reddy Event Center is nearby, and the city named the avenue in GK Reddy’s honor."],
@@ -1132,6 +1188,9 @@ const SERVICES=[
    tag:"Reddy Management Group", body:["RMG combines deep real estate knowledge with functional expertise to help clients and partners rethink how they acquire, develop and use real estate.","Our services include strategy development, revenue forecasting, capital allocation, consumer research, market analysis and property valuation, giving partners well-researched guidance at every stage of a project."],
    ticks:["Strategy development","Revenue forecasting","Capital allocation","Market & consumer research"]},
 ];
+/* Grand opening film: YouTube uploads by GK Reddy, embedded on the current reddyhotel.com (part 4 is not published there). */
+const FILM={title:"Bonham, TX Holiday Inn Express grand opening",parts:[
+  {id:"Bduo1nEmjEE",label:"Part 1"},{id:"swIoEC9mAnM",label:"Part 2"},{id:"hkOQZsejMDU",label:"Part 3"},{id:"1N4FRGlDXRU",label:"Part 5"}]};
 const SOCIAL=[]; // add {label:"in", name:"LinkedIn", url:"https://..."} once the company publishes profiles
 const FORM_ENDPOINT=""; // Formspree / WPForms webhook / your handler; empty = prepared-email fallback
 
@@ -1173,6 +1232,30 @@ function buildHero(){
   btns.forEach((b,i)=>b.addEventListener("click",()=>show(i)));
   document.addEventListener("visibilitychange",()=>{if(document.hidden)clearTimeout(timer);else show(cur)});
   show(0);
+}
+/* Film player: poster + play button; embeds YouTube in place where the host allows it, otherwise opens YouTube. */
+const CAN_EMBED=/^https?:$/.test(location.protocol)&&!/claude|anthropic/i.test(location.hostname+" "+[...(location.ancestorOrigins||[])].join(" "));
+let filmCur=0;
+const ytWatch=id=>`https://www.youtube.com/watch?v=${id}`;
+const ytEmbed=id=>`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+function buildFilm(){
+  const ch=$("#vchap");
+  ch.innerHTML=FILM.parts.map((v,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===0}">${ph("video-"+v.id,{sizes:"(max-width:520px) 45vw, 14vw"})}<span><span class="lbl">${v.label}</span></span></button>`).join("");
+  $$("button",ch).forEach(b=>b.addEventListener("click",()=>setFilm(+b.dataset.i,!!$("#vframe iframe"))));
+  setFilm(0,false);
+}
+function setFilm(i,play){
+  filmCur=i; const v=FILM.parts[i], f=$("#vframe");
+  $$("#vchap button").forEach((b,j)=>b.setAttribute("aria-pressed",String(j===i)));
+  $("#vNow").textContent=`${v.label} of the film`; $("#vYT").href=ytWatch(v.id);
+  f.innerHTML=`${ph("video-"+v.id,{sizes:"(max-width:900px) 100vw, 58vw"})}<a class="play" href="${ytWatch(v.id)}" target="_blank" rel="noopener" aria-label="Play ${esc(FILM.title)}, ${v.label}"><span class="vt"><span class="lbl" style="color:rgba(244,240,232,.8)">Grand opening · ${v.label}</span><b>Holiday Inn Express, Bonham</b></span><span class="pbtn"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></a>`;
+  $(".play",f).addEventListener("click",e=>{if(!CAN_EMBED)return;e.preventDefault();playFilm()});
+  if(play&&CAN_EMBED)playFilm();
+}
+function playFilm(){
+  if(!CAN_EMBED){return}
+  const v=FILM.parts[filmCur], f=$("#vframe");
+  f.insertAdjacentHTML("beforeend",`<iframe src="${ytEmbed(v.id)}" title="${esc(FILM.title)}, ${v.label}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`);
 }
 function heroSplit(){const h=$("#heroH"),p=$("#heroPhoto");if(!h||!p||!h.offsetParent)return;const sx=p.getBoundingClientRect().left-h.getBoundingClientRect().left;h.style.setProperty("--sx",Math.max(0,sx)+"px")}
 function buildDisc(){
@@ -1285,6 +1368,7 @@ function renderProject(slug){
   $("#pdBody").innerHTML=`<div class="li"><p class="lbl kicker">Project overview</p><p class="statement">${esc(p.lead)}</p><div class="body">${p.body.map(b=>`<p>${esc(b)}</p>`).join("")}</div>
     <div style="display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;margin-top:8px"><a class="btn b-terra" href="#contact" data-enq="Development partnership">Discuss a similar project ${AR}</a>${p.site?`<a class="tl" href="${p.site}" target="_blank" rel="noopener">Visit website ↗</a>`:""}</div></div>
     <aside><div class="box"><span class="lbl">Project details</span><dl class="creds" style="grid-template-columns:1fr;border-top:0">${p.facts.map(([k,v])=>`<div style="padding-left:0;border-left:0"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl></div>
+    ${p.film?`<div class="box"><span class="lbl">On film</span><p style="font:330 22px/1.3 var(--f-serif)">The grand opening, 2016</p><a class="tl" style="justify-self:start" href="#home" data-anchor="film" data-autoplay>Watch the film</a></div>`:""}
     <div class="box"><span class="lbl">Location</span><p style="font:330 24px/1.25 var(--f-serif)">${esc(loc(p))}</p><span class="coord">${fmtC(cityOf(p))}</span><a class="tl" style="justify-self:start" href="https://www.google.com/maps/search/?api=1&query=${mapQ}" target="_blank" rel="noopener">Open in Google Maps ↗</a></div></aside>`;
   const extra=p.img.slice(1); $("#pdGalWrap").hidden=!extra.length;
   $("#pdGal").innerHTML=extra.map(k=>ph(k,{cls:"zoom wipe",sizes:"(max-width:700px) 92vw, 50vw"})).join("");
@@ -1416,6 +1500,7 @@ document.addEventListener("click",e=>{
   const a=e.target.closest("a[href^='#']"); if(!a)return;
   if(a.dataset.anchor)pendingAnchor=a.dataset.anchor;
   if(a.dataset.filter)pfFilter=a.dataset.filter;
+  if(a.hasAttribute("data-autoplay")&&CAN_EMBED)setTimeout(()=>{if(!$("#vframe iframe"))playFilm()},900);
   const same=a.getAttribute("href")===location.hash||(a.getAttribute("href")==="#home"&&!location.hash);
   if(same){e.preventDefault();
     if(a.dataset.filter)applyFilter(pfFilter);
@@ -1433,7 +1518,7 @@ burger.addEventListener("click",()=>{const o=document.body.classList.toggle("men
 addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
 
 /* ========================================================================= boot */
-buildHero(); buildDisc(); buildHS(); buildFB(); buildPipe(); buildPortfolio(); buildServices(); buildCTAs();
+buildHero(); buildFilm(); buildDisc(); buildHS(); buildFB(); buildPipe(); buildPortfolio(); buildServices(); buildCTAs();
 drawMap("mapHome"); drawMap("mapPf"); drawMap("mapCt"); buildCityList(); buildFooter();
 $$("form.enq").forEach(bindForm);
 hydrateImgs($('.page[data-page="home"]'));
